@@ -1,0 +1,13 @@
+#urhm will be text based game on a dungeon crawler?
+
+class human()
+
+class monster()
+
+class dungeon()
+
+class hallway()
+
+class door()
+
+class loot():
