@@ -1,0 +1,52 @@
+from itertools import count
+from tkinter import *
+
+#widgets are gui elements 
+#windows are containers for widgets
+
+window = Tk # instantiate an instance of a window
+window.geometry("420x420") # control size of window
+window.title("Bro code first GUI program")
+
+icon = PhotoImage(file='logo.png') #set title image in projet folder
+window.iconphoto(True,icon)
+window.config(background="5cfcff") #window background colour
+
+
+#label , widget that holds text or image
+photo = PhotoImage(file='logo.png')
+label = label(window,text="Hello World",font=('Arial',40,'bold'),fg='green',bg='white',relief=RAISED,bd=10,padx=20,pady=20,image=photo,compound='bottom')
+label.pack() # or label.place(x=0,y=0)
+
+
+#button , click it does stuff
+def click():
+    global count
+    count +=1
+    print(count)
+
+photo = PhotoImage(file='Like.png')
+button = Button(window,text="click me!",command=click,font=("Comic Sans",30),fg="#00ff00",bf="black",activeforeground="",activebackground="",state=ACTIVE)
+button.pack()
+
+
+#Entrybox,accept single line of user input
+def submit():
+    username = entry.get()
+    print("Hello"+username)
+    entry.config(state=DISABLED)
+def delete():
+    entry.delete(0,END)
+def backspace():
+    entry.delete(len(entry.get())-1, END)
+entry = Entry(window,font=("Arial",50),fg='Green',bg="black",show="*")
+#entry.insert(0,"spongebob")
+entry.pack(side=LEFT)
+submit_button = Button(window,text="submit",command=submit)
+delete_button = Button(window,text="delete",command=delete)
+backspace_button = Button(window,text="backspace",command=backspace)
+submit_button.pack(side=RIGHT)
+delete_button.pack(side=RIGHT)
+backspace_button.pack(side=RIGHT)
+
+window.mainloop() #place window on computer screen 
