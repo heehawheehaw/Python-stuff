@@ -1,0 +1,9 @@
+#widnow defedner may prevent from doing this
+#go to directory that contains file 
+#pyinstaller -> 
+"""
+-F (all in 1 file)
+-W (remove terminal window)
+-i icon.ico (adds custmoer icon to .exe)*must be ico file
+clock.py 
+"""

@@ -1,0 +1,577 @@
+from itertools import count
+from time import time
+from tkinter import *
+from tkinter import colorchooser
+from tkinter import filedialog
+from tkinter import ttk
+
+#widgets are gui elements 
+#windows are containers for widgets
+
+window = Tk # instantiate an instance of a window
+window.geometry("420x420") # control size of window
+window.title("Bro code first GUI program")
+
+icon = PhotoImage(file='logo.png') #set title image in projet folder
+window.iconphoto(True,icon)
+window.config(background="5cfcff") #window background colour
+
+
+#label , widget that holds text or image
+photo = PhotoImage(file='logo.png')
+label = label(window,text="Hello World",font=('Arial',40,'bold'),fg='green',bg='white',relief=RAISED,bd=10,padx=20,pady=20,image=photo,compound='bottom')
+label.pack() # or label.place(x=0,y=0)
+
+
+#button , click it does stuff
+def click():
+    global count
+    count +=1
+    print(count)
+
+photo = PhotoImage(file='Like.png')
+button = Button(window,text="click me!",command=click,font=("Comic Sans",30),fg="#00ff00",bf="black",activeforeground="",activebackground="",state=ACTIVE)
+button.pack()
+
+
+#Entrybox,accept single line of user input
+def submit():
+    username = entry.get()
+    print("Hello"+username)
+    entry.config(state=DISABLED)
+def delete():
+    entry.delete(0,END)
+def backspace():
+    entry.delete(len(entry.get())-1, END)
+entry = Entry(window,font=("Arial",50),fg='Green',bg="black",show="*")
+#entry.insert(0,"spongebob")
+entry.pack(side=LEFT)
+submit_button = Button(window,text="submit",command=submit)
+delete_button = Button(window,text="delete",command=delete)
+backspace_button = Button(window,text="backspace",command=backspace)
+submit_button.pack(side=RIGHT)
+delete_button.pack(side=RIGHT)
+backspace_button.pack(side=RIGHT)
+
+
+#checkbox 
+x = BooleanVar()
+def display():
+    if(x.get()):
+        print("Your agree!")
+    else:
+        print("You dont agree?")
+python_photo = PhotoImage(file='Python.png')
+check_button = Checkbutton(window,
+text="I agree to something",
+variable=x,
+onvalue=1,
+offvalue=0,
+command=display,
+font=('Arial',20),
+fg="#00ff00",
+bg='black',
+activeforeground='#00FF00',
+activebackground='black',
+padx=25,
+pady=10,
+image=python_photo,
+compound='left')
+check_button.pack()
+
+#radio button
+food = ["pizza","hamburger","hotdog"]
+pizzaImaage=PhotoImage(file='pizza.png')
+hamburgerImaage=PhotoImage(file='hamburger.png')
+hotdogImaage=PhotoImage(file='hotdog.png')
+foodImages = [pizzaImaage,hotdogImaage,hamburgerImaage]
+def order():
+    if(x.get()==0):
+        print("You ordered pizza:")
+    elif(x.get()==1):
+        print("You ordered a hotdog:")
+    else:
+        print("suck mah boolls")
+x=IntVar()
+for index in range(len(food)):
+    radiobutton = Radiobutton(window,
+    text=food[index], #adds text to radio buttons
+    variable=x, #group buttons together if share same radio
+    value=index,# assigns each radio button a different value
+    padx = 25, #adds padding on x axis
+    font = ("Impact",50),
+    image = foodImages[index], #adds image to radio buttons
+    compound = 'left',
+    indicatoron=0, #eliminate cicule indicators
+    width = 375, #sets width of radio button
+    command = order # set command of radio button to function
+    ) 
+    radiobutton.pack(anchor=W)
+
+
+#sliding scale
+from tkinter import *
+def submit():
+    print("The temperature is:"+ str(scale.get())+"degrees C")
+window=Tk()
+hotImage = PhotoImage(file='hot.png')
+hotLabel = Label(image=hotImage)
+hotLabel.pack()
+scale = Scale(window,
+from=100,
+to=0,
+length=600,
+orient=VERTICAL #HORIZONTAL,
+font = ('Consoles',20),
+tickintervale = 10, #adds numeric indicators for value
+showvalue = 0 #hide current value
+resolution = 5, #increment of slider
+troughcolor = 'blue' #slider color
+fg = '#FF1C00',
+bg = '#111111',
+)
+scale.set(((scale['from']-scale['to'])/2)+scale(['to']))
+#scale.set(50)
+scale.pack()
+coldImage = PhotoImage(file='cold.png')
+coldLabel = Label(image=coldImage)
+coldLabel.pack()
+button = Button(window,text='submit',command=submit)
+button.pack()
+
+
+#listbox
+def submit():
+    food=[]
+    for index in listbox.curselection():
+        food.insert(index,listbox.get(index))
+    print("You have ordered:")
+    for index in food:
+        print(index)
+    #print(listbox.get(listbox.curselection()))
+def add():
+    listbox.insert(listbox.size(),entryBox.get())
+    listbox.config(height=list)
+def delete():
+    for index in reversed(listbox.curselection()):
+        listbox.delete(index)
+    #listbox.delete(listbox.curselection())
+    listbox.config(height=listbox.size())
+listbox=Listbox(window,
+bg='#f7ffde',
+font=("Constantia",35),
+width=12,
+selectmode=MULTIPLE,
+)
+listbox.pack()
+listbox.insert(1,"pizza")
+listbox.insert(2,"pasta")
+listbox.insert(3,"garlic bread")
+listbox.insert(4,"soup")
+listbox.insert(5,"Salad")
+listbox.config(height=listbox.size())
+entryBox = Entry(window)
+entryBox.pack()
+submitButton = Button(window,text="submit",command=submit)
+submitButton.pack()
+addButton = Button(window,text="add",command=add)
+addButton.pack()
+deleteButton = Button(window,text="delete",command=delete)
+deleteButton.pack()
+
+
+#message box
+from tkinter import messagebox
+def click():
+    messagebox.showinfo(title='This is an info message box',message='you are a persno')
+    #while(true):
+    messagebox.showwarning(title='warning',message='you have a virus')
+    messagebox.showerror(title='Error!',message='something went wrong')
+    if messagebox.askokcancel(title='ask ok cancel',message='Do you want to the thing?')
+        print('You did a thing!')
+    else:
+        print('You canceleda thing!')
+    if messagebox.askretrycancel(title='ask ok cancel',message='Do you want to the thing?')
+        print('You retryed a thing!')
+    else:
+        print('You canceleda thing!')
+    if messagebox.askyesno(title='ask yes or no?',message='Do you like cake?'):
+        print('I like cake too!')
+    else:
+        print('Why do not like cake?')
+    answer = messagebox.askquestion(title='ask question',message='do you like mum?')
+    if(answer == 'yes'):
+        print('I like pie too ')
+    else:
+        print('why do you not liek pie')
+    asnwer = messagebox.(askyesnocancel(title='yes no cancel',message='Do you like to code',icon='warning'#info/error)
+    if(answer==True):
+        print('You like to code')
+    elif(answer == False):
+        print('why are you watching coding')
+    else:
+        print("You have dodge the qns")
+window=Tk()
+button = Button(window,command=click,text='clickme')
+button.pack()
+window.mainloop()
+
+
+#colour chooser
+from tkinter import*
+from tkinter import colorchooser
+def click():
+    color = colorchooser.askcolor()
+    print(color)
+    colorHex = color[1]
+    print(colorhex)
+    window.config(bg=colorHex)#change background color
+    '''or'''
+    #color = colorchooser.askcolor()
+    #window.confgi(bg=color[1])
+    '''or'''
+    #window.config(bg=colorchooser.askcolor()[1])
+window = Tk()
+window.geometry("420x420")
+button = Button(text='click me ', command = click)
+button.pack
+window.mainloop
+
+#creating a text widget , function like text area
+from tkinter import * 
+def submit():
+    input = text.get("1.0",END)
+    print(input)
+window = Tk()
+text = Text(window,
+bg="light yellow",
+font=("Ink Free",25),
+height=8,
+width=20,
+padx=20,
+pady=20,
+fg="purple")
+text.pack()
+button = Button(window,text="submit",command=submit)
+button.pack()
+window.mainloop()
+
+#open and read content of file
+from tkinter import *
+from tkinter import filedialog
+def openFile():
+    filepath = filedialog.askopenfilename(initialdir="C:\\Users.....",
+    title = "open file okay?",filetypes=(("text files","*.txt"),
+    ("all files","*.*"))
+    file = open(filepath,'r')
+    print(file.read())
+    file.close( )
+window= Tk()
+button = Button(text="Open",command=openFile)
+button.pack()
+window.mainloop()
+
+#saving a file
+from tkinter import * 
+from tkinter import filedialog
+def saveFile():
+    file = filedialog.asksaveasfile(defaultextension='.txt',
+    filetypes=[("Text file",".txt"),("HTML file",".html"),("all file",".*")])
+    if file is None:
+        return
+    #filetext = str(text.get(1.0,END))
+    filetext = input("Enter some text I guess: ")
+    file.write(filetext)
+    file.close()
+window = Tk()
+button = Button(text='save',command=saveFile)
+button.pack()
+text.Text(window)
+text.pack()
+window.mainloop()
+
+
+#menubar
+from tkinter import *
+def openFile():
+    print("File has been opened!")
+def saveFile():
+    print("File has been saved!")
+def cut():
+    print("File has been cut!")
+def copy():
+    print("File has been copy!")
+def paste():
+    print("File has been paste!")
+window = Tk()
+openImage=PhotoImage(file="open.png")
+saveImage=PhotoImage(file="save.png")
+exitImage=PhotoImage(file="exit.png")
+menubar = Menu(window)
+window.config(menu=menubar)
+fileMenu = Menu(menubar, tearoff = 0,font=("MV Boli",15))
+menubar.add_cascade(label="File",menu=fileMenu)
+fileMenu.add_command(label="Open",command=openFile,image=openImage,compound='left')
+fileMenu.add_command(label="Save",command=saveFile,image=saveImage,compound='left')
+fileMenu.add_separator()
+fileMenu.add_command(label="Exit",command=quit,image=exitImage,compound='left')
+editMenu = Menu(menubar,tearoff=0)
+menubar.add_cascade(label="Edit",menu=editMenu)
+fileMenu.add_command(label="Cut",command=cut)
+fileMenu.add_command(label="Copy",command=copy)
+fileMenu.add_command(label="Paste",command=paste)
+window.mainloop()
+
+
+
+#frames , a rectangular container to group and hold widgets
+from tkinter import * 
+window = Tk()
+frame=Frame(window,bg="pink",bd=S,relief=SUNKEN)
+frame.place(x=10,y=10)
+button = Button(frame,text="W",font=("consolas",25),width=3).pack(side=TOP)
+button = Button(Frame,text="A",font=("consolas",25),width=3).pack(side=LEFT)
+button = Button(Frame,text="S",font=("consolas",25),width=3).pack(side=LEFT)
+button = Button(Frame,text="D",font=("consolas",25),width=3).pack(side=LEFT)
+window.mainloop()
+
+#creating new windows
+from tkinter import*
+def create_window():
+    new_window = Toplevel()#new window on top of another window , linked ot bottom window
+    #if use new_window = TK(), will create new window with no dependencies
+    old_window.destroy()#will close out of old window
+old_window=Tk()
+Button(window,text="create new window",command=create_window).pack()
+window.mainloop()
+
+#creating separte tabs 
+from tkinter import * 
+from tkinter import ttk # gives acces to widgets not normally available
+window = Tk()
+notebook = ttk.Notebook(window) # widget that manages a collection of widget
+tab1 = Frame(notebook) #new frame for tab1
+tab2 = Frame(notebook) #new frame for tab2
+notebook.add(tab1,text="Tab1")
+notebook.add(tab2,text="Tab2")
+notebook.pack(expand=True,fill="both")#expand , expand to fill any space not other wise used
+Label(tab1,text="Hello, this is tab#1",width=50,height=25).pack()
+label(tab2,text="Goodby, this tab#2",width=50,height=25).pack()
+window.mainloop()
+
+
+#grid , geometr manager that organizes widgets in a table manner in parent window
+window = Tk()
+titleLabel = Label(window, text="Enter you info",font=("Arial",25)).grid(row=0,column=0)
+firstNameLabel = Label(window,text="First name:",width=20,bg='red').grid(row=1,column=0)
+firstNameEntry = Entry(window).grid(row=1,column=1)
+lastNameLabel = Label(window,text="Last name:",bg="green").grid(row=2,column=0)
+lastNameEntry = Entry(window).grid(row=2,column=1)
+emailLabel = Label(window,text="email:",bg="blue",width=30).grid(row=3,column=0)
+emailEntry = Entry(window).grid(row=3,column=1)
+submitButton = Button(window,text="Submit!").grid(row=3,column=0,columnspan=2)
+window.mainloop()
+
+
+
+#progress bar
+from tkinter import * 
+from tkinter.ttk import *
+import time
+def start():
+    GB = 100 
+    download = 0
+    speed = 1 
+    while(download<tasks):
+        time.sleep(0.5)
+        bar['value']+=(speed/GB)*100
+        download+=speed
+        percent.set(str(int((x/tasks)*100))+"%")
+        text.set(str(x)+"/"+str(tasks)+"Gigabyte completed")
+        window.update_idletasks()
+    bar['value']+=10
+window=Tk()
+percent=StringVar()
+text = StringVar()
+bar = Progressbar(window,orient=HORIZONTAL,length=300)
+bar.pack(pady=10)
+percentLabel = Label(window,textvariable=percent),pack()
+tasklabel = Label(window,textvariable=text).pack()
+button=Button(window,text="download",command=start).pack()
+window.mainloop()
+
+
+
+
+#canvas , widget used to draw graphs , plots , images in a window
+from tkinter import *
+window = Tk()
+#canvas = Canvas(window,height=500,width=500)
+#canvas.create_line(0,0,500,500,fill="blue",width=5)
+#canvas.create_line(0,500,500,0,fill="red",width=5)
+#canvas.create_rectangle(50,50,250,250,fill = "purple")
+#points = [250,0,500,500,0,500]
+#canvas.create_polygon(points,fill="yellow",outline="black",width=5)
+#canvas.create_arc(0,0,500,500,fill = 'green',style=PIESLICE,start=270,extent=180)
+canvas.create_arc(0,0,500,500,fill="red",extent=180,width=10)
+canvas.create_arc(0,0,500,500,fill="white",extent=180,start=180,width=10)
+canvas.create_oval(190,190,310,310.fill="white",width=10)
+canvas.pack()
+window.mainloop()
+
+#how to create key events ,widget & window have access to bind function
+from tkinter import *
+def doSomething(event):
+    #print("You pressed:"+ event.keysym)
+    lable.config(text=event.keysym)
+window=Tk()
+window.bind("<Key>",doSomething)
+lanel=Label(window,font=("helvetica",100))
+label.pack()
+window.mainloop()
+
+
+#mouse events 
+from tkinter import * 
+def doSomething(event):
+    pritn("Mouse coordinates:" + str(event.x)+","+str(event.y))
+window = Tk()
+window.bind("<Button-1>",doSomething) #left mouse click
+window.bind("<Button-2>",doSomething) #scroll wheel
+window.bind("<Button-3>",doSomething) #right mouse click
+window.bind("<ButtonRelease>",doSomething) #coordinates when button release
+window.bind("<Enter>",doSomething) #coordinate when enter window
+widnow.bind("<leave>",doSomething) # coordinate when leave
+window.bind("<motion>",do something) # coordinate when moving mouse only
+window.mainloop()
+
+
+#dragging & droppign widgets
+from tkinter import * 
+def drag_start(event):
+    widget = event.widget 
+    widget.startX = event.x
+    widget.startY = event.y
+def drag_motion(event):
+    widget = event.widget
+    x = widget.winfo_x() - label.startX + event.x
+    y = widget.winfo_y() - label.starty + event.y
+    widget.place(x=x,y=y)
+window = Tk()
+label=Label(window,bg="red",width=10,height=5)
+label.place(x=0,y=0)
+label2=Label(window,bg="blue",width=10,height=5)
+label2.place(x=100,y=100)
+label.bind("<Button-1>",drag_start)
+label.bind("<B1-Motion>",drag_motion)
+label2.bind("<Button-1>",drag_start)
+label2.bind("<B1-Motion>",drag_motion)
+window.mainloop()
+
+
+#moving image on window
+from tkinter import * 
+def move_up(event):
+    label.place(x=label.winfo_x(),y=label.winfo_y()-10)
+def move_down(event):
+    label.place(x=label.winfo_x(),y=label.winfo_y()+10)
+def move_left(event):
+    label.place(x=label.winfo_x()-10,y=label.winfo_y()-1)
+def move_right(event):
+    label.place(x=label.winfo_x()+10,y=label.winfo_y()-1)
+window = Tk()
+window.geometry("500x500")
+window.bind("<w>",move_up)
+window.bind("<s>",move_down)
+window.bind("<a>",move_left)
+window.bind("<d>",move_right)
+myimage = PhotoImage(file='racecar.png')
+label = Label(window,image=myimage,bg="red")
+label.place(x=0,y=0)
+window.mainloop()
+
+#moving image on canvas
+from tkinter import*
+def move_up(event):
+    canvas.move(myimage,0,-10)
+def move_down(event):
+    canvas.move(myimage,0,10)
+def move_left(event):
+    canvas.move(myimage,-10,0)
+def move_right(event):
+    canvas.move(myimage,+10,0)
+window = Tk()
+window.bind("<w>",move_up)
+window.bind("<s>",move_down)
+window.bind("<a>",move_left)
+window.bind("<d>",move_right)
+canvas = Canvas(window,width=500,height=500)
+canvas.pack()
+photoimage=PhotoImage(file='racecar.png')
+myimage = canvas.create_image(0,0,image=photo,anchor=NW)
+
+
+#animating images
+from tkinter import *
+import time
+WIDTH = 500
+HEIGHT = 500
+xVelocity = 3 
+yVelocity = 2
+window = Tk()
+canvas = Canvas(window,width=WIDTH,height=HEIGHT)
+canvas.pack()
+background_photo = PhotoImage(file='space.png')
+background = canvas.create_image(0,0,image=background_image,anchor=NW)
+photo_image = PhotoImage(file='ufo.png')
+my_image = canvas.create_image(0,0,image=photo_image,anchor=NW)
+image_width = photo_image.width
+image_height = photo_image.height()
+while True:
+    coordinates = canvas.coords(my_image)
+    print(coordinates)
+    if(coordinates[0]>=(WIDTH-image_width) or coordinattes[0]<0):
+        xVelocity = -xVelocity
+    if(coordinates[1]>=(HEIGHT-image_height) or coordinattes[1]<0):
+        yVelocity =-yVelocity
+    canvas.move(my_image,xVelocity,yVelocity)
+    window.update()
+    time.sleep(0.01)
+window.mainloop()
+
+
+#animating multiple objects
+from tkinter impot * 
+import time
+from ball import *
+window = Tk()
+WIDTH = 500
+HEIGHT = 500
+canvas = Canvas(window,width=WIDTH,height=HEIGHT)
+canvas.pack()
+volley_ball = Ball(canvas,0,0,100,1,1,'white')
+tennis_ball = Ball(canvas,0,0,50,4,3,"yellow")
+basket_ball = Ball(canvas,0,0,126,8,7,"orange")
+while True:
+    volley_ball.move()
+    tennis_ball.move()
+    basket_ball.move()
+    window.update()
+    time.sleep(0.01)
+
+window.mainloop()
+
+##class ball for above
+class Ball:
+    def __init__(self,canvas,x,y,diameter,xVelocity,yVelocity,color):
+        self.canvas=canvas
+        self.image = canvas.create_oval(x,y.diameter,diameter,fill=color)
+        self.xVelocity = xVelocity
+        self.yVelocity = yVeloctiy
+    def move(self):
+        coordinates = self.canvas.coords(self.image)
+        if(coordinates[2]>=(self.canvas.winfo_width()) or coordinates[0]<0):
+            sefl.xVelocity = -self.xVelocity
+        if(coordinates[3]>=(self.canvs.windo_height()) or coordinates[1]<0):
+            self.yVelocity = -self.yVelocity
+        self.cavas.move(self.image,self.xVelocity,self.yVelocity)<0)
