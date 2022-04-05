@@ -1,0 +1,26 @@
+Control flow is the order in which the program code executes ; help program make decisions ; regulated by ->conditional statement , loops , function calls 
+Conditional statements are statements that can only run based on certain conditions
+loops are used to repeate a specific blk of code
+Function call is when function is called by name to executea code
+
+IF statements  ; check conditions to execute certain code when condition is True ; use comparison&logical operators to check conditions met
+
+ELSE statements ; execute certain code when condition is False ;
+ELIF statemetns ; check multiple expressiosn for true conditions
+
+
+WHILE loops , to execute a set of code continously as long as a condition is true ; make sure there is a way for loop to terminated ; can use ELSE clause in the loop
+
+
+FOR loop ; iterate over a sequence->list , tuple , dictionary , set ,string ; does not require indexing variable to initiate loop ; use break & continue statemetns
+
+
+
+BREAK statement ; break out of loop statement ; terminate loop even if condition is true
+
+Continue statement ; stop current iteration of loop & continue next iteration of loop
+
+
+
+
+

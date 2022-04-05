@@ -14,7 +14,22 @@ bls = Instructors("Django for beginners")
 bls.course = "HTML"
 bls.printinfo()
 print(bls.course)
-
+'''
+object are created from classes ; object can be an entity or anything in your program
+class is a template for creating object
+classes have attributes which are like variables that strore data 
+classes have methods , like function
+can create many object from single class
+instantiating a class means creating new object from a class
+function defined inside a class is a method
+[_init_()] initialize objcts with intial values ; called automatically when a new object is created from a class
+instantiating a class
+accessing methods from a class 
+accessing attributes from instance of class
+once create class , can reuse class in other codes writing ,similar to python modules 
+class variables ; defined outside any method ; accessed outside class with className ; not prefixed ; modifications affects all class instances ; classes are indented
+instace / object variables ; defined inside class methods ; accessed outside class with object name ; prefixed with self keyword ; prefixed with sekf keyword ; modifications to object is local ; instances are not indented
+'''
 
 #class , 
 class User:
@@ -79,6 +94,30 @@ class Square(Shape):
 mysquare = Square(5)
 print(mysquare.area())
 print(mysquare.perimeter())
+'''
+hides internal details & shows only functionalities
+abstract classes contain 1 or more methods
+cannot be instantiated 
+require subclassess to provide implementation for the abstract method
+subclass of an abstract class in python are not required to implement abstract methods of the parent class
+Abstract methods , methods that are declared but contains no implmentation ; requires subclasses to provided implementation for them
+can ABC(abstractbaseclasses) modules
+'''
+class Shape:
+	def area(self):
+		pass
+	def perimeter(self):
+		pass
+class Square(Shape):
+	def __init__(self,side):
+		self.side = side
+myshape = Shape()
+from abc import ABC,abstractmethod
+class Shape(ABC):
+	@abstractmethod
+	def
+
+
 
 #encapsulation
 class Cars:
@@ -93,6 +132,25 @@ ford = cars(250,"green")
 nissan = Car(300,"red")
 toyota = Cars(350,"blue")
 ford,set_speed(750)
+ford.__speed = 800
+
+'''
+ppppppppppprocess of restricting access to methods & variables to prevent direct data modification
+Public Methods&Variables are accessible from anywhere in program
+PrivateMethods&Variables are accessible from their own class
+'''
+class Cars:
+	def __init__(self,speed,color):
+		self.speed = speed
+		self.color = color 
+	def set_speed(self,value):
+		self.speed = value
+	def get_speed(self):
+		return self.speed
+ford = Cars(250,"Green")
+NIssan = Cars(300,"Red")
+toyota = Cars(350,"blue")
+ford.set_speed(750)
 ford.__speed = 800
 
 #inheritance
@@ -114,6 +172,29 @@ class Lawyers(Person):
 	def printinfo(self):
 		print(self,firstname,self.lastname)
 
+'''
+process that allows to create new class , & reuse code from existing class, reusing methods & attributes from parent class
+parent class (super/base class) is the clas been inherited from 
+Child/subclass/derived class is the one that inheirits from another class
+parent class with instantiating class
+child inherit from parent 
+*if create child class without  [_init_()] method , will inherit all methods & attributes of the parent class
+adding attributes to child class
+'''
+class Person:
+	def __init__(self,fname,lname):
+		self.firstname = fname
+		self.lastname = lname
+	def printname(self):
+		print(self.firstname,self.lastname)
+florist = Person("Jane","Flowers")
+florist.printname()
+class Lawyers(Person):
+	def __init__(self,fname,lname):
+		Person.__init__(self,fname,lname)
+	def printinfo(self):
+		print(self.firstname,self.lastname)
+
 #polymorphism
 def addNumbers(a,b,c=1):
 	return a + b + c
@@ -127,6 +208,25 @@ class Uk():
 queen = UK()
 queen.capital_city()
 zara = spain()
+zara.capital_city()
+for country in (queen,zara):
+	country.capital_city()
+	country.language()
+def europe(eu):
+	eu.capital_city()
+
+'''
+ability to take or have various forms
+allow to define methods in child class with same name as methods in parent class but doing different things
+'''
+class Uk():
+	def capital_city(self):
+		print("London is the capital of UK")
+	def language(self):
+		print("English is the primary language")
+queen = UK()
+queen.capital_city()
+zara = Spain()
 zara.capital_city()
 for country in (queen,zara):
 	country.capital_city()

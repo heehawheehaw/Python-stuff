@@ -1,0 +1,37 @@
+List ; a  collection of data which can be of mixed type ; items in a lits are ordered/accessed by their index & changeable
+
+
+looping in lists
+
+-[.extend()] ; append or join lists
+-[.append()] ; append items to list
+-[.sort()] ; order in ascending/descending order
+-[.count()] ; count no. of items on list
+-[.index()] ; returns index position of item
+-[.inset()] ; adds a new item anywhere to list
+-[.pop()] ; removes item from list 
+-[.remove()]; removes specified item from  list
+-[del()] ; deletes list
+-nested list (2d,multiple) ; collection of list grouped together ; each list is an item & a row with columns within collection
+
+
+
+Tuples ; a list that can be change , immutable ; can be accessed by their index
+
+
+
+*tuple with constructor
+
+Set ; unordered&unindexed&uniquw collection of values ; can add values but values are immutable; used to include membership testing & eliminating duplicate entries
+
+
+*sets with construcctors
+
+
+Dictionary ; collection of key value pairs ; value can change ; values have unique keys ; can store mixed data types ; simlar to a has table with time complexity of o(1)
+
+
+
+
+
+creating directories for python files

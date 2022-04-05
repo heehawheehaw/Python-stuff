@@ -1,0 +1,13 @@
+[type] indicated data type i.e. type(10)
+Casting is the proces of converting the value of a varaible from 1 data type to another 
+
+Number
+-Integer [int] , whole/counting numbers of unlimiter length ; without decimals ; positive or negative
+-Floating point [float] , number containing 1 or more decimals ; positive or negative
+String[str] ; sequences of character data
+-strings are enclose in either single or double quotes
+-string can contains any characters including spaces
+*escape characters
+-characters in strings have associated index
+-string index are 0 based 
+Boolean[bool]; 2 values , True or False

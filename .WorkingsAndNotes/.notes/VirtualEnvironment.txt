@@ -1,0 +1,8 @@
+isolated python environment which is not accessible by global system
+allows to use different packages & version for various projects 
+->prevent conflicts with projects
+[Virtualenv] ; is used to created env
+type in cmd [pip install virtualenv] to install tool
+create venv in working directory by typing [virtualenv myenv]vi
+active venv , type in project directory [myenv\scripts\activate]
+stop venv , type in project directory [myenv\scripts\deactivate]

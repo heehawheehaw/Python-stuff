@@ -1,4 +1,65 @@
 #default parameter value
+'''
+DontRepeatYourself(DRY principle)
+FirstClassFunctions an entity which supports all operation support for other entities
+closure a inner function that has to acces to variable created in local scope even after outer function has finished executing
+Functions are blocks of codes that does something ; reusable ; excuted when called ; paramets&arguments ; can return data ; built in languages or custom created i.e. [print()]
+
+-parameter ; variable defiend inside a functiosn parenthesis  
+-argument ; actual value give the function when called
+
+returning value
+
+
+Default parameter value ; value used when called without passing funciton a value ; only paramets at end of a parameter list can have default value as values are assigned by postii
+
+
+Keyword arguments ; specify what parameters to use from list of parameters ; do not need to worry about orders of arguments ; give value to parameters you watn provided the other parameters have default argument values
+
+
+Functions returning a functions
+
+
+assign functions to variables
+
+
+Varaible scope 
+-variables defiend in functions have local
+-varaible defined outside function is global 
+-global can be accessed anywher infile
+
+
+nested functions 
+
+
+
+Pass statement ; indicated function has empty block of statements
+
+Pass function as arguments to other funcitons
+
+
+VarArgs Parameters ; define variable number of arguments for a function ; postitional arguments from asterisk to end are collected as a tuple or dictionary
+
+
+built in functions & methods
+-methods are functions for a given object data type
+-function are called to do something specific
+
+Anonymous Function / Lambda
+-functions without name
+-take serveral argumetns , 1 expression
+
+
+
+DocStrings ; allow to display documentation to describe aspects of code when executed
+
+
+-[help()] / [pydoc()] 
+
+Decorators ; design pattern in python that allows user to add functionality to existing objects without modifying its structures ; objects can be methods , funcitons or classes ; called before definition of object
+
+
+'''
 def student_names(names="Bluelime"):
 	print("Hellow" + names)
 student_names()

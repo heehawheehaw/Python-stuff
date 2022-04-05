@@ -3,6 +3,15 @@ from datetime import time
 from datetime import datetime
 #make sure python file is diff from module you want to import
 # python will look into dir , if no find will make a pyc file & compile it
+'''
+contains predefined classes & methods to manipulate dates & times
+can format output returned from manipulating date & time objects by using a method -> [strftime()]
+-methods take 1 parameters ; format of returned string
+-formatting date
+%a,A,w,d,b,B,m,y,Y
+-formatting time 
+%H,l,p,M,S,f,z,Z,j,U,W,c,x,X,%%
+'''
 today = date.today()
 print(today)
 print(today.day,today,month,today.year)
@@ -18,6 +27,12 @@ print(today.strftime("the current year is : %Y"))
 print(today.strftime("%a, %d %B, %y"))
 print(today.strftime("%I:%M:%S" %p))
 
+'''
+can use timedelta class to create objects which will enable to create date & time calculations
+-used for a span of tiem & date 
+-allows you to perform time based calculations
+
+'''
 print(str(today + timedelta(365)))
 print(timedelta(days=365, hours=7, minutes=5))
 

@@ -1,0 +1,49 @@
+*data used by operators are called operands
+*binary is language computers understand i.e. 0's & 1's
+binary is a base 2 counting system
+to convert numbers to binary , just divi10de by 1/2 ; ignore remainder ; 1 assigned to odd ; 0 assigned to even
+ i.e. 13->6->3->1 ; [1 1 0 1]
+to covert binary to number , add increasing exponential values from rihgt to left ; acculamet value of 1's
+i.e. [1 0 0 1 0] ; 2^4 2^3 2^2 2^1 2^0 ; 16+2 ; 18
+for decimals inverse i.e. 2^3 2^2 2^1 2^0 . 2^-1 2^-2 2^-3
+2,4,8,16,
+useful to know powers of 2
+*precedence determines the order in which operators should be valuated if there are multiple operators used in a statement or expression
+(),**,~x,*,/,//,%,+,-,<<,>>,&,^,|,==,!=,>,>=,<=,is,isnot,in,notin,not,and,or
+*associativity is the order in whihc an expression is evaluated htat has multiple operatos of the saame precedence , which left=right associativity
+*associaitivity cannot be appliedd to comparison & assignment operators in python
+Arithmetic Operators
+
+Assignment Operators
+
+
+%= , //= , **= , &= , |= , ^= , >>= , <<=
+
+Comparison Operators
+
+Logical Operators , compare value
+
+*combines with above operators
+Identity Operators, compare if object same type
+
+*determine a value belong to certain class/type
+*[id()] to determine identity of object
+Membership Operators, check if value available
+
+*check if value is present in sequence of data
+
+Bitwise Operators, compare binary numbers
+-AND[&] ; set each bit to matching value, otherwise 0
+
+
+-OR[|] ; set each bit to matching value , otherwise 1
+
+
+-XOR[^] ; Set each matching bit to 0 , otherwise 1
+
+
+-NOT[~] ; invert bits i.e. X->-(x+1) ; ~7=-8
+-LeftShift[<<] ; returns x with the bits shifted to the left by y places ; y places adds zeros
+ i.e. 3<<2 [11+00]
+-RightShift[>>] ; returns x with the bits shifted to the right by y places ; y places delters bits 
+i.e. 3>>1 , 11-1=> 1=>1

@@ -16,12 +16,26 @@ f = open("myfile.txt", 'w')
 f.write("\nHappiness is from within")
 f.close()
 
+'''
+python has ab built in file object which allows interactions with file in programs
+open(),read(),readline(),readlines(),write().writelines(),append(),Close()
+python file access mode
+r,r+,w,w+,rb,a,t,x
+'''
 #accessing file object attributes
 f= open("myfile.txt")
 print(f.name)
 print(f.mode)
 print(f.closed)
 f.close()
+
+'''
+file object have attributes
+file poitners is the position that operations start from when file being interacted with in 
+-by default , set to begining to file (rmode)
+-[tell()] can show current file pointer position
+-[seek()] ; set position of pointer
+'''
 
 #file pointers
 f=open('myfile.txt')

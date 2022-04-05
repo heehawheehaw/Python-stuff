@@ -1,0 +1,213 @@
+urllib ; used to work with URL  ,a package which contains several modules
+
+tkinter 
+python module/package used to created GUI applications 
+cross platform GUI toolkit
+TK , open source tool used for GUI interface development
+-provides a library of interactive widgets
+-gui elements
+-developed as an extension to TCL (tool command language)
+-designed to be platform independent
+"""
+Xlib(C) -> Tk(C) -> Tk widgets (C & Tcl)
+->_tkinter(C) -> Tkinter Python module 
+-> python applications
+"""
+
+
+Scrapy
+free open source application framework for crawling websites & extracting data 
+install with [pip install scrapy]
+official website is scrapy.org
+start a project [Scrapy startproject projectName .]*period is optional
+->will create folders , 1 will act as empty container, another will store all files
+Data flow between components of system is controlled by execution engine , engine also triggers when event 
+engine will get initial requerst to crawl website from spider 
+engines will schedule request in scheduler and ask for next request
+spiders are custom classes to pass responses & extract items from websites
+scheduler is used to receive a request from an engine and organize for execution 
+-will return next available request to engine
+engines will send request to donwloader via internet , will pass through donwloader middleware
+downloader is responsible to fetching webpages and feed to engine and in turn fed to spiders
+downlaoder will generate response with page which sent to engine , passes through middlesware
+middle ware are specific hooks and process request
+engine will receive response and pass it to spider , passing through another middleware
+spider will retunr to engine scraped data , pass through spider middleware
+engine will processed items to item pipelines and processed request to scheduler and ask scheduler if any request to crawl
+item pipelines could perform cleanising , validating & other purposes
+
+spider -> subclass [scrapy.Spider]
+*selectors select certain parts of html documents by using css or xpath
+*yield = keyword returned by generators
+*generators = iterables, generate values on fly
+
+scrappy shell is used to debug and test code 
+access from cmd [Scrapy shell "url"]
+running spider & saving scrapped data -> [scrapy runspider quotes_spider.py-o quotes.xml]
+*can save as csv or json file
+cleancss.com/strip-xml/ *clears tags off doucments
+
+
+
+django
+a free & open source web applciation framework , written in python
+framework is a set of componenets that helps you  to develop websites & apps faster & easier
+documentation available on djangoproject.com
+list of websites builton on framework->djangosites.org
+uses a modle view controller type of architecture
+calls pieac's by different names ; URL patterns, Views ,Models, Templates
+each pieace has different rules
+UrL patterns ; takes path of request and decide which views will handle request
+each view will used models to query data
+view will then use template to display data 
+can install by creating a requirements.txt[pip install -r requirements.txt] and placing it ing root directory or [pip install django]
+django project is a collection of configuration & apps for a website ; contain multiples apps 
+django app is a web application that does something ; can be used in multiple projects
+make django project ; [django-admin startproject mysite]
+*(.)tells script to install django in current directory. avoids creation of extra outer directory
+django development server uses port 8000
+start server [python manage.py runserver]
+django uses migrations to propogate changesto modle in database schema
+*models are source of information about ur data you are storing
+[migrate] - applies and unapplies migrations
+[makemigrations] - creates new migrations based on changes you make to your modules 
+[sqlmigrate] - displays the sql statements for a migrations
+[showmigrations] - lists a projects migrations and their status
+[python manage.py showmigrations]
+[python manage.py makemigrations]
+[python manage.py migrate]
+[django-admin startapp jobs] - start directory of apps
+mockup is a static visual representation of project
+django comes with a built in admin interface page
+django superuser is used to manage the django admin page
+[python manage.py createsuperuser]
+template contains static parts of desired html output
+template also has some special systax for dynamic
+special template tages{%tag}
+special template variables : {{variable}}
+special variable& filer : {{variable | filter}}
+""""
+app directory 
+->static -> app directory name -> add bs & css
+-> templates -> app directory name -> add index.html
+""""
+
+view() ; takes a request & returns a response
+-normally control the logic of django app
+url patterns -> Views -> Templates
+Models <-> Views
+
+uniform resoure locator , website address
+url patterns ; path of url request and where to send it ; url resolver
+{%load stati%}
+django models are python classes that allows us to save data inside a data 
+each object is a row in a table
+a model is the single source of information about your data
+each model contains theessential fields & behaviours of the data you are stroing 
+eahc model maps to a single database table
+ each model is a python clasx the subclasses
+each attributes represent database field
+Application Programming Interface
+-allows 2 application to talk to each other
+-visual&social apis
+-user pass methods & parameters to api ,
+-api send request to app
+-app sends response to api 
+-apid sends response to user
+
+Hypertext transfer protocol
+-web pages are made of html documents
+-protocol refers to a specific set of communication rules
+-allows fetching of resources such ove the internet & web
+-foundation of any data exchange on the web
+-a request response client server protocol
+-statless protocol , current request does not know previous request actiosn
+
+BootStrap 
+framework for creaing websites quickly
+projects created are mobile friendly
+websites are responsev, adjust to and screen size
+downlad on getbootstrap.com
+access through a contentdeliverynetwork , host website
+-all need to do is reference link in code
+bootstrap code inserted into head section of html document
+
+
+Beautiful SOup 
+a python library used to extract data from HTML & XML files 
+can installed using pip , [pip install beautifulsoup4 (bs4)]
+official documentation at www.crummy.com/software/BeautifulSoup/bs4/doc/#
+[pip install bs4] to install package
+
+Python anywhere
+platform that enables to run/host python or django code
+will be in pythonanywhere domain to host app
+need to create api token for app to interact with platform
+[pa_autoconfigure_django.py 'linkgithubrepo']
+-download code from git hub 
+-create a virtual env on pyythonanywhere and also activate it 
+-update your settings file with some deployment settings
+-setup of database pn pythonanywhere using manage.py command 
+-setup static files 
+-configure platform to serve your web page via API
+[pip3.7 install --user pythonanywhere]
+
+#machine learning
+ability for computers to learn from experience without being explicitly programmed
+machine learning frameworks
+-scikitlearn
+-tensorflow
+-machine learning on aws
+-IBM watson
+example/sample is a sinlge element in a dataset
+each part of sample is a feature / characteristics
+label is a category for data or a prediction from a classification algorithm
+classifier is a supervised machine learnign model that makes a prediction about how a piece of data should be categorized 
+model is an algorithm or approach to a problem
+algo is a well defined procedure that allwos a computer to solve a problem
+supervised learning is when a machine ai is tasked with predicting a category or quantity
+-basically a data mining task of inferring a function from labelled training data
+unsupervised leaning is when computer analyses unlabelled data and has no previous examples and tries to identify patterns in the data
+classification is a supervised machine learning model that makes a prediction about how a piece of data should be categorized 
+regression is a supervised machines learning model that attemspts to predict a quantity or a number
+clustering is an unsupervised machine learning moddel that attempts to group similar examples together
+probability is a means of expressing how likely an event will occur
+
+modules 
+Python Module is a python file that can contain ; functions , global variables & other objects ; a code library
+to create a module , create a python file & then add whatever objects you want in it
+
+to use module -> type [import "module_name")
+
+python has alot of built in modules
+packages are folder or directories which contain python module files ,also contain a special python file -> [__init__.py]
+-init file canbe empty ; just tells python that the directory of folder contains a python package which can be imported like a module
+-packages can be nested
+-convienient way to organize
+
+[dir() function] ; built in function used to list objects defined inside a module
+-
+Pychache is a folder containing python3 bytecode compiled and ready to be executed [.pyc]
+-make program faster
+-auto created after a module has been imported & used 
+-created in same dir as module itslef
+
+tensorflow
+python library for fast numerical computing created by Google and released under the Apache 2.0 open source license
+libraries like TensorFlow and Theano are not simply deep learning libraries , they are libraries for deep learning
+just number crunching libraries
+good for training and implementing deep neural networks
+used in productions at uber , snapchat & google etc
+TesorFlow , represents computations as graphs
+-nodes in graphs are calleds ops , operations
+-op takes 0 or more Tensors , perfroms computations and produces 0 or more Tensors
+-tensor is a typed multidimensional array
+uses data flow graphs to represent a learning model 
+-comprise of nodes and edges 
+-nodes represent math op
+-edges represents tensors
+uses sesssion to bring constants
+
+tensflow core program consists of 2 sections 
+-building a computational graph
+-running a computational graph
